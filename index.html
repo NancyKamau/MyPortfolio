@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nancy Njambi Kamau | Information Technology Professional</title>
+  <meta name="description" content="Portfolio of Nancy Njambi Kamau, Information Technology professional, lecturer and MSc Computer Science candidate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --bg: #F2F7FF;
+      --ink: #1F3A5F;
+      --ink-body: #24344F;
+      --ink-muted: #3C5578;
+      --rule: #D5DBE5;
+      --box-border: #C9D2E0;
+      --placeholder: #DCE6F5;
+      --accent: #C2512C;            /* coral accent, darkened slightly so small labels stay readable */
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Open Sans", system-ui, sans-serif;
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    a { color: var(--ink); }
+    a:hover { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ---------- Top bar ---------- */
+    .topbar { border-bottom: 1px solid var(--rule); }
+
+    .topbar__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar__name { font-family: var(--serif); font-weight: 600; font-size: 24px; }
+    .topbar__role { font-family: var(--serif); font-size: 18px; color: var(--ink-muted); }
+    .topbar__link { font-family: var(--serif); font-weight: 600; font-size: 22px; text-decoration: none; }
+
+    /* ---------- Small caps-style label ---------- */
+    .label {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 72px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero__name {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(72px, 13vw, 150px);
+      line-height: 1;
+    }
+    .hero .label + .hero__name { margin-top: 28px; }
+
+    .hero__year { margin: 40px 0 0; font-family: var(--serif); font-size: 22px; }
+
+    /* Arch-shaped photo frame */
+    .arch {
+      width: min(100%, 420px);
+      height: 520px;
+      margin: 36px 0;
+      border-radius: 210px 210px 0 0;
+      overflow: hidden;
+      background: var(--placeholder);
+    }
+    .arch img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .photo__placeholder {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .photo__initials { font-family: var(--serif); font-size: 96px; line-height: 1; }
+    .photo__initials--small { font-size: 72px; }
+    .photo__hint { font-size: 14px; color: var(--ink-muted); }
+
+    /* ---------- Sections ---------- */
+    .section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+    .section--ruled { border-top: 1px solid var(--rule); }
+
+    .heading {
+      margin: 0 0 40px;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 1;
+    }
+
+    /* About */
+    .section--about { text-align: center; padding-top: 56px; }
+    .section--about .label { margin-bottom: 32px; }
+    .about__text {
+      margin: 0;
+      font-weight: 300;
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.6;
+      color: var(--ink-body);
+    }
+
+    /* Body copy */
+    .body {
+      margin: 0;
+      font-weight: 300;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.6;
+      color: var(--ink-body);
+    }
+
+    /* Experience / education entries */
+    .entry {
+      padding-bottom: 36px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .entry--last { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+
+    .entry__title {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(26px, 3.4vw, 34px);
+      line-height: 1.2;
+    }
+    .entry__meta {
+      margin: 0 0 16px;
+      font-family: var(--serif);
+      font-size: 19px;
+      color: var(--ink-muted);
+    }
+
+    /* Accomplishments list */
+    .list { padding-left: 22px; display: flex; flex-direction: column; gap: 14px; }
+
+    /* Skills and certifications boxes */
+    .grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .box {
+      min-height: 76px;
+      padding: 26px 28px;
+      border: 1px solid var(--box-border);
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.25;
+    }
+    .box span {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--ink-muted);
+    }
+
+    /* Contact */
+    .contact { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; }
+
+    .contact__photo {
+      width: 280px;
+      height: 380px;
+      background: var(--placeholder);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .contact__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .contact__details { display: flex; flex-direction: column; gap: 14px; }
+    .contact__name { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 34px; }
+    .contact__link { font-weight: 300; font-size: 21px; }
+    .contact__note { margin: 0; font-weight: 300; font-size: 18px; color: var(--ink-muted); }
+
+    /* Footer */
+    .footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px 56px;
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 520px) {
+      .arch { height: 440px; border-radius: 180px 180px 0 0; }
+      .section { padding: 56px 20px; }
+      .contact__photo { width: 100%; max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div>
+        <div class="topbar__name">Nancy Njambi Kamau</div>
+        <div class="topbar__role">Information Technology Professional</div>
+      </div>
+      <a class="topbar__link" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <p class="label">Information Technology Professional</p>
+      <h1 class="hero__name">Nancy</h1>
+
+      <!-- To use your photo, replace the <div class="photo__placeholder"> ... </div> with:
+           <img src="photo.jpg" alt="Portrait of Nancy Njambi Kamau"> -->
+     <div class="arch">
+  <img src="myportrait.png" alt="Portrait of Nancy Njambi Kamau">
+</div>
+
+      <p class="hero__name" aria-hidden="true">Kamau</p>
+      <p class="hero__year">2026</p>
+    </section>
+
+    <section id="about" class="section section--about">
+      <h2 class="label">About me</h2>
+      <p class="about__text">I am a dedicated Information Technology professional with a five-year track record of teaching and practical application. I excel in communication, leadership and problem-solving, always prioritising quality and efficiency, and I am proficient in Python and web development. I am currently completing an MSc in Computer Science, researching deep learning for healthcare systems.</p>
+    </section>
+
+    <section id="experience" class="section">
+      <h2 class="heading">Experience</h2>
+
+      <article class="entry">
+        <h3 class="entry__title">Graduate Assistant at Zetech University</h3>
+        <p class="entry__meta">February 2024 - December 2025 · Ruiru, Kenya</p>
+        <p class="body">Taught allocated course units, set and marked assignments and exams, and produced study manuals and learning materials. Monitored student progress, achievement and attendance while mentoring students. Among the pioneering lecturers who taught data science at the university.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Graduate Assistant at Dedan Kimathi University of Technology</h3>
+        <p class="entry__meta">September 2021 - September 2023 · Nyeri, Kenya</p>
+        <p class="body">Conducted laboratory sessions and tutorials, developed laboratory manuals, and taught most diploma units using teaching materials prepared from the curriculum. Interactive sessions helped most students excel in the units I tutored.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Clean Room Production Operator at M-Kopa Ltd</h3>
+        <p class="entry__meta">August 2020 - August 2021 · Nairobi, Kenya</p>
+        <p class="body">Assembled television sets and ran quality assurance tests, setting a team record for the most sets assembled in a day and in a week. Provisioned phones for sale and was ranked among the best-performing operators. Kept stock records and applied Kaizen principles of continuous improvement.</p>
+      </article>
+
+      <article class="entry entry--last">
+        <h3 class="entry__title">Intern at Githunguri Dairy and Community Sacco</h3>
+        <p class="entry__meta">January 2019 - April 2019 · Kiambu, Kenya</p>
+        <p class="body">Handled customer registration and inquiries, sped up loan applications for prompt disbursement, and kept accurate financial records. Followed up on overdue loans and did fieldwork to promote Sacco products and recruit new members.</p>
+      </article>
+    </section>
+
+    <section id="education" class="section section--ruled">
+      <h2 class="heading">Education</h2>
+
+      <article class="entry">
+        <h3 class="entry__title">MSc Computer Science, Dedan Kimathi University of Technology</h3>
+        <p class="entry__meta">Current · Nyeri, Kenya</p>
+        <p class="body">Nearing completion of my thesis on applying deep learning models to enhance healthcare systems.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">BSc Information Technology, Dedan Kimathi University of Technology</h3>
+        <p class="entry__meta">Graduated 2020 · Nyeri, Kenya</p>
+        <p class="body">Second class honours (upper division), with strong software development skills in Python and web development.</p>
+      </article>
+
+      <article class="entry entry--last">
+        <h3 class="entry__title">Kenya Certificate of Secondary Education, Precious Blood Kagwe Girls Secondary School</h3>
+        <p class="entry__meta">2015 · Kiambu, Kenya</p>
+        <p class="body">Excelled in Mathematics, Physics and Chemistry, and took part in sports and mathematics competitions.</p>
+      </article>
+    </section>
+
+    <section id="skills" class="section section--ruled">
+      <h2 class="heading">Skills</h2>
+      <ul class="grid">
+        <li class="box">Microsoft Office Suite</li>
+        <li class="box">Web Application Programming</li>
+        <li class="box">Data Analytics</li>
+        <li class="box">Artificial Intelligence</li>
+        <li class="box">Tutoring Students</li>
+        <li class="box">Administrative Assistance</li>
+        <li class="box">Attention to Detail</li>
+        <li class="box">Adaptability</li>
+      </ul>
+    </section>
+
+    <section id="accomplishments" class="section section--ruled">
+      <h2 class="heading">Accomplishments</h2>
+      <ul class="list body">
+        <li>Conducting research on using Artificial Intelligence for disease diagnosis.</li>
+        <li>One of the pioneering lecturers to teach data science at Zetech University, helping it grow into a course many students now take.</li>
+        <li>Built the website <a href="https://lennwooddesignandconstruction.co.ke">lennwooddesignandconstruction.co.ke</a> and am now working on an e-commerce site.</li>
+        <li>Achieved a C2 proficiency level in English with the EF SET Certificate.</li>
+        <li>Completed the Zakike Leadership Training Program.</li>
+        <li>Sunday school teacher at Fountain Gate Church Nairobi, also serving in the choir and protocol.</li>
+      </ul>
+    </section>
+
+    <section id="certifications" class="section section--ruled">
+      <h2 class="heading">Certifications</h2>
+      <ul class="grid">
+        <li class="box">Claude<span>Coursiv, 2026</span></li>
+        <li class="box">ChatGPT<span>Coursiv, 2026</span></li>
+        <li class="box">Midjourney<span>Coursiv, 2026</span></li>
+        <li class="box">Lovable<span>Coursiv, 2026</span></li>
+        <li class="box">Jasper AI<span>Coursiv, 2026</span></li>
+        <li class="box">Gemini<span>Coursiv, 2026</span></li>
+        <li class="box">Python Course<span>Kaggle Courses, 2023</span></li>
+        <li class="box">Internet of Things<span>Cisco Networking Academy, 2019</span></li>
+        <li class="box">CCNA 1<span>Cisco Networking Academy, 2017</span></li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section section--ruled">
+      <h2 class="heading">Contact</h2>
+      <div class="contact">
+        <div class="contact__photo">
+  <img src="myportrait.png" alt="Portrait of Nancy Njambi Kamau">
+</div>
+        <div class="contact__details">
+          <p class="contact__name">Nancy Njambi Kamau</p>
+          <a class="contact__link" href="mailto:nancynjambi2016@gmail.com">nancynjambi2016@gmail.com</a>
+          <a class="contact__link" href="tel:+254725328863">+254 725 328 863</a>
+          <p class="contact__note">References available on request.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">© 2026 Nancy Njambi Kamau</footer>
+
+</body>
+</html>
